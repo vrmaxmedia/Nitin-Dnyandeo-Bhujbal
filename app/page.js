@@ -3,28 +3,28 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
 // =====================================================================
-//  CLIENT CONFIGURATION (Mr. Nitin Dnyandeo Bhujbal)
+//  CLIENT CONFIGURATION (Mr. Nitin Bhujbal - Organic Farming Advisor)
 // =====================================================================
-const PLACE_ID = "ChIJj2jXU1B5xDsRRQ1moJkjnwU"; 
+const PLACE_ID = "ChIJj2jXU1B5xDsRRQ1moJkjnwU"; // Nitin Bhujbal Place ID
 
 const CLIENT_CONFIG = {
-  businessName: "Mr. Nitin Dnyandeo Bhujbal",
+  businessName: "Mr. Nitin Bhujbal",
   subHeading: "Organic Farming Advisor & Consultant",
-  tagline: "ORGANIC FARMING • FARM PLANNING • SOIL TESTING • GOVT SCHEMES",
+  tagline: "ORGANIC FARMING • FARM PLANNING • SOIL TESTING • CROP YIELD",
   description:
-    "17+ years of experience in organic and sustainable farming. Guiding farmers in farm planning, soil testing, and modern agriculture techniques in Indapur, Pune.",
-  city: "Indapur, Pune",
+    "Best Organic Farming Advisor & Consultant in Maharashtra. 17+ years of experience helping farmers with organic farming, soil testing, and sustainable farm planning to increase yield and reduce costs.",
+  city: "Indapur, Pune, Maharashtra 413106",
   areaLabel: "Indapur, Pune",
-  fullAddress: "Tirupati Shopping Center, Old Pune-Solapur Highway, Opp. Ijugade Petrol Pump, Indapur, Pune 413106",
+  fullAddress: "Tirupati Shopping Center, Old Pune-Solapur Highway, Indapur, Pune, Maharashtra 413106",
   phone: "+919960836343",
   cleanPhone: "919960836343",
   logoUrl: "/logo.png",
 
   googleReviewUrl: `https://search.google.com/local/writereview?placeid=${PLACE_ID}`,
-  mapsDirectionUrl: `https://www.google.com/maps/dir/?api=1&destination=Nitin%20Bhujbal%20Indapur&destination_place_id=${PLACE_ID}`,
+  mapsDirectionUrl: `https://www.google.com/maps/dir/?api=1&destination=Mr.+Nitin+Bhujbal&destination_place_id=${PLACE_ID}`,
 
-  instagramUrl: "",
-  facebookUrl: "",
+  instagramUrl: "https://www.instagram.com/nitin_bhujbal_official", // Optional, adjust if exact handle known
+  facebookUrl: "https://www.facebook.com/nitin.bhujbal.9469",     // Optional
   youtubeUrl: "",
   websiteUrl: "https://nitinbhujbal.com/",
 
@@ -105,10 +105,13 @@ async function copyToClipboard(text) {
   }
 }
 
-export default function FarmingReviewPage() {
+export default function AgriReviewPage() {
   const [mounted, setMounted] = useState(false);
   const [selectedChips, setSelectedChips] = useState([]);
-  const [language, setLanguage] = useState("HINGLISH"); // Farmers generally prefer Hinglish/Marathi flavor
+  
+  // Default Language Set to Marathi
+  const [language, setLanguage] = useState("MARATHI"); 
+  
   const [reviewDraft, setReviewDraft] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -188,7 +191,7 @@ export default function FarmingReviewPage() {
       updated = selectedChips.filter((c) => c !== chip);
     } else {
       if (selectedChips.length >= 3) {
-        alert("Aap max 3 points select kar sakte hain.");
+        alert("तुम्ही जास्तीत जास्त ३ पर्याय निवडू शकता."); // Marathi alert
         return;
       }
       updated = [...selectedChips, chip];
@@ -238,18 +241,12 @@ END:VCARD`;
     URL.revokeObjectURL(url);
   }
 
-  if (!mounted) return <div style={{ minHeight: "100vh", backgroundColor: "#f0fdf4" }} />;
+  if (!mounted) return <div style={{ minHeight: "100vh", backgroundColor: "#f4fbf4" }} />;
 
   return (
-    <main className="farm-glass-viewport">
-      {/* BULLETPROOF MOBILE BACKGROUND FIX */}
-      <div className="fixed-bg-container">
-        <img 
-          src="/bg.png" 
-          alt="background" 
-          className="bg-image-pin"
-        />
-      </div>
+    <main className="agri-glass-viewport">
+      {/* BULLETPROOF FIXED BACKGROUND */}
+      <div className="fixed-bg"></div>
 
       <div className="main-content-flow">
         
@@ -266,9 +263,9 @@ END:VCARD`;
 
         <p className="brand-serif-subtitle">{CLIENT_CONFIG.subHeading}</p>
 
-        <div className="nature-divider">
+        <div className="organic-divider">
           <span className="divider-line"></span>
-          <span className="divider-leaf">🌿</span>
+          <span className="divider-leaf">🌱</span>
           <span className="divider-line"></span>
         </div>
 
@@ -276,7 +273,7 @@ END:VCARD`;
           <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
         </div>
 
-        <p className="experience-tracker-title">SHARE YOUR EXPERIENCE</p>
+        <p className="experience-tracker-title">तुमचा अनुभव शेअर करा</p>
 
         {/* Filter Chips */}
         <div className="floating-pills-cloud">
@@ -296,9 +293,9 @@ END:VCARD`;
         </div>
         <p className="chip-hint">Select up to 3 points</p>
 
-        {/* Language Selector */}
+        {/* Language Selector (Marathi First, then English, Hindi) */}
         <div className="capsule-lang-dock">
-          {["ENGLISH", "HINGLISH"].map((lang) => {
+          {["MARATHI", "ENGLISH", "HINDI"].map((lang) => {
             const active = language === lang;
             return (
               <button
@@ -348,13 +345,13 @@ END:VCARD`;
             )}
           </div>
 
-          <div className="card-ornament-center"><span>🌿</span></div>
+          <div className="card-ornament-center"><span>🌱</span></div>
 
           <button
             type="button"
             disabled={loading || isTyping || !reviewDraft}
             onClick={handleCopyAndRedirect}
-            className="full-nature-copy-btn"
+            className="full-luxury-copy-btn"
           >
             <span>{copied ? "Copied! Opening Google..." : "Copy & Paste on Google"}</span>
           </button>
@@ -473,23 +470,21 @@ END:VCARD`;
       </div>
 
       <style jsx global>{`
-        /* Reset mobile behavior */
         html, body {
           margin: 0 !important;
           padding: 0 !important;
-          background-color: #f0fdf4 !important; /* light green fallback */
-          min-height: 100%;
-          overscroll-behavior-y: none; 
+          background-color: #f4fbf4 !important; 
+          min-height: 100% !important;
         }
 
-        .farm-glass-viewport {
+        .agri-glass-viewport {
           position: relative; 
-          --tx-main: #14532d;     /* dark green text */
+          --tx-main: #14532d;     
           --tx-sub: #166534;      
-          --brand-primary: #15803d; /* emerald green */
-          --brand-gold: #d97706;    /* amber/soil gold */
+          --brand-primary: #15803d; 
+          --brand-gold: #eab308;
           --glass-bg: rgba(255, 255, 255, 0.85); 
-          --glass-border: rgba(255, 255, 255, 0.7);
+          --glass-border: rgba(255, 255, 255, 0.6);
           --glass-shadow: rgba(21, 128, 61, 0.08);
 
           min-height: 100vh;
@@ -503,25 +498,19 @@ END:VCARD`;
           align-items: center;
         }
 
-        /* 
-         * BULLETPROOF MOBILE BACKGROUND FIX 
-         */
-        .fixed-bg-container {
+        /* FIXED BACKGROUND */
+        .fixed-bg {
           position: fixed;
           top: 0;
-          bottom: 0;
           left: 0;
-          right: 0;
-          z-index: 0;
+          width: 100vw;
+          height: 100vh;
+          background-image: url('/bg.png'); 
+          background-size: cover;
+          background-position: center bottom; 
+          background-repeat: no-repeat;
+          z-index: 0; 
           pointer-events: none;
-          overflow: hidden;
-        }
-
-        .bg-image-pin {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center bottom;
         }
 
         .main-content-flow {
@@ -535,7 +524,6 @@ END:VCARD`;
           text-align: center;
         }
 
-        /* Glassmorphism Utility Class */
         .glass-panel {
           background: var(--glass-bg);
           backdrop-filter: blur(12px);
@@ -563,7 +551,7 @@ END:VCARD`;
           box-shadow: 0 10px 25px rgba(21, 128, 61, 0.2);
           margin-bottom: 12px;
           animation: floatLogo 3.5s ease-in-out infinite;
-          border: 3px solid var(--brand-gold);
+          border: 3px solid var(--brand-primary);
         }
 
         @keyframes floatLogo {
@@ -573,7 +561,7 @@ END:VCARD`;
 
         .brand-main-title {
           font-family: Georgia, serif;
-          font-size: 24px;
+          font-size: 26px;
           font-weight: 800;
           color: var(--tx-main);
           margin: 0 0 4px;
@@ -584,12 +572,12 @@ END:VCARD`;
         .brand-serif-subtitle {
           font-family: Georgia, serif;
           font-style: italic;
-          font-size: 13px;
+          font-size: 13.5px;
           color: var(--tx-sub);
           margin: 0 0 10px;
         }
 
-        .nature-divider {
+        .organic-divider {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -607,7 +595,7 @@ END:VCARD`;
 
         .divider-leaf {
           color: var(--brand-primary);
-          font-size: 12px;
+          font-size: 10px;
         }
 
         .stars-cluster {
@@ -679,7 +667,7 @@ END:VCARD`;
         }
 
         .capsule-lang-btn {
-          padding: 5px 18px;
+          padding: 5px 14px;
           border-radius: 999px;
           border: none;
           background: transparent;
@@ -692,8 +680,8 @@ END:VCARD`;
 
         .capsule-lang-btn.active {
           background: var(--brand-gold);
-          color: #ffffff;
-          box-shadow: 0 3px 8px rgba(217, 119, 6, 0.4);
+          color: #14532d;
+          box-shadow: 0 3px 8px rgba(234, 179, 8, 0.4);
         }
 
         .signature-review-box {
@@ -772,8 +760,7 @@ END:VCARD`;
           font-family: Georgia, serif;
           font-size: 13px;
           font-style: italic;
-          color: #166534;
-          opacity: 0.6;
+          color: #64748b;
           margin: 0;
         }
 
@@ -800,14 +787,14 @@ END:VCARD`;
           color: var(--brand-primary);
           font-size: 12px;
           margin: 6px 0 10px;
-          opacity: 0.6;
+          opacity: 0.8;
         }
 
-        .full-nature-copy-btn {
+        .full-luxury-copy-btn {
           width: 100%;
           height: 50px;
           border-radius: 999px;
-          background: linear-gradient(90deg, #15803d 0%, #166534 100%);
+          background: linear-gradient(90deg, #16a34a 0%, #15803d 100%);
           border: none;
           color: #ffffff;
           font-size: 12.5px;
@@ -817,8 +804,8 @@ END:VCARD`;
           transition: transform 0.15s ease;
         }
 
-        .full-nature-copy-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        .full-nature-copy-btn:active:not(:disabled) { transform: scale(0.98); }
+        .full-luxury-copy-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .full-luxury-copy-btn:active:not(:disabled) { transform: scale(0.98); }
 
         .card-disclaimer-note {
           font-size: 9.5px;
@@ -895,6 +882,10 @@ END:VCARD`;
         .map-disc:hover svg { stroke: #ffffff; }
         .web-disc:hover { background: var(--brand-primary); border-color: var(--brand-primary); }
         .web-disc:hover svg { stroke: #ffffff; }
+        .insta-disc:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); border-color: transparent; }
+        .insta-disc:hover svg { stroke: #ffffff; }
+        .fb-disc:hover { background: #1877f2; border-color: #1877f2; }
+        .fb-disc:hover svg { stroke: #ffffff; }
 
         .icon-tag {
           font-size: 9.5px;
