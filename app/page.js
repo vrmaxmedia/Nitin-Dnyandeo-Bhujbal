@@ -23,14 +23,15 @@ const CLIENT_CONFIG = {
   googleReviewUrl: `https://search.google.com/local/writereview?placeid=${PLACE_ID}`,
   mapsDirectionUrl: `https://www.google.com/maps/dir/?api=1&destination=Mr.+Nitin+Bhujbal&destination_place_id=${PLACE_ID}`,
 
-  instagramUrl: "https://www.instagram.com/nitin_bhujbal_official", // Optional, adjust if exact handle known
-  facebookUrl: "https://www.facebook.com/nitin.bhujbal.9469",     // Optional
+  instagramUrl: "https://www.instagram.com/nitin_bhujbal2141/",
+  facebookUrl: "https://www.facebook.com/shetitumachikhatriamachi/",
   youtubeUrl: "",
   websiteUrl: "https://nitinbhujbal.com/",
 
-  agencyName: "VR Max AI",
-  agencyWhatsapp: "918700660097",
-  agencyPhoneDisplay: "+91 87006 60097",
+  // Developer / branding (footer)
+  developerName: "Sandesh Koshti",
+  developerWhatsapp: "917972195009",
+  developerPhoneDisplay: "+91 79721 95009",
 
   // Must match exactly with the route.js CHIPS keys
   chips: [
@@ -51,8 +52,8 @@ const MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(
   `${CLIENT_CONFIG.businessName}, ${CLIENT_CONFIG.fullAddress}`
 )}&output=embed`;
 
-const AGENCY_WA_LINK = `https://wa.me/${CLIENT_CONFIG.agencyWhatsapp}?text=${encodeURIComponent(
-  "Hi VR Max AI, I want to get a QR review system for my business."
+const DEVELOPER_WA_LINK = `https://wa.me/${CLIENT_CONFIG.developerWhatsapp}?text=${encodeURIComponent(
+  "Hi Sandesh, I saw your work on Mr. Nitin Bhujbal's review page and I'd like a similar setup for my business."
 )}`;
 
 function useTypewriter(fullText, speed = 10) {
@@ -459,11 +460,10 @@ END:VCARD`;
         {/* Mini Footer */}
         <footer className="mini-footer">
           <span className="mini-footer-pill glass-panel">
-            Powered by <strong>{CLIENT_CONFIG.agencyName}</strong>
+            Designed &amp; Developed by <strong>{CLIENT_CONFIG.developerName}</strong>
             <span className="mini-footer-dot">•</span>
-            Get QR:
-            <a href={AGENCY_WA_LINK} target="_blank" rel="noreferrer">
-              {CLIENT_CONFIG.agencyPhoneDisplay}
+            <a href={DEVELOPER_WA_LINK} target="_blank" rel="noreferrer">
+              {CLIENT_CONFIG.developerPhoneDisplay}
             </a>
           </span>
         </footer>
